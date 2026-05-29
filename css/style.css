@@ -1101,3 +1101,207 @@ p { margin: 0 0 1em; }
     scroll-behavior: auto !important;
   }
 }
+
+/* =========================================================
+   Subpages (Phase 2) — Produktseiten
+   Reuse der Homepage-Tokens; nur produktspezifische Bausteine.
+   ========================================================= */
+
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 12px;
+  letter-spacing: .3px;
+  color: var(--cd-grey-md);
+  margin-bottom: 1.25rem;
+}
+.breadcrumb ol {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;
+}
+.breadcrumb a { color: var(--cd-grey-md); }
+.breadcrumb a:hover { color: var(--cd-red); }
+.breadcrumb [aria-current="page"] { color: var(--cd-grey-dk); }
+.breadcrumb__sep { color: var(--cd-grey-line); }
+
+/* Subhero — Text links, Produktbild rechts (hell, editorial) */
+.subhero {
+  background: #fff;
+  border-bottom: 1px solid var(--cd-grey-line);
+}
+.subhero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  padding-top: clamp(2.25rem, 5vw, 3.5rem);
+  padding-bottom: clamp(2.25rem, 5vw, 3.5rem);
+}
+@media (max-width: 860px) {
+  .subhero__inner { grid-template-columns: 1fr; }
+}
+.subhero__title {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.06;
+  font-weight: 300;
+  color: var(--cd-red);
+  letter-spacing: -.015em;
+  margin-bottom: 1.25rem;
+}
+.subhero__title::before {
+  content: ""; display: block;
+  width: 48px; height: 3px; background: var(--cd-red);
+  margin-bottom: 1.25rem;
+}
+.subhero__lead {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  color: var(--cd-grey-dk);
+  max-width: 34rem;
+  margin: 0 0 1.75rem;
+}
+.subhero__cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 1.75rem; }
+.subhero__media {
+  background: var(--cd-grey-sect);
+  border: 1px solid var(--cd-grey-line);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  display: flex; align-items: center; justify-content: center;
+  min-height: 280px;
+}
+.subhero__media img { max-height: 380px; width: auto; object-fit: contain; }
+@media (max-width: 860px) {
+  .subhero__media { order: -1; min-height: 200px; }
+  .subhero__media img { max-height: 240px; }
+}
+
+/* Facts — schnelle Eckdaten als Definition-Grid */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.25rem 1.5rem;
+  margin: 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--cd-grey-line);
+}
+.facts div { margin: 0; }
+.facts dt {
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--cd-grey-md); margin-bottom: .35rem;
+}
+.facts dd { margin: 0; font-size: 15px; color: var(--cd-grey-dk); font-weight: 500; }
+
+/* Section background variant + Doppel-Spalten-Intro */
+.section--alt {
+  background: var(--cd-grey-sect);
+  border-top: 1px solid var(--cd-grey-line);
+  border-bottom: 1px solid var(--cd-grey-line);
+}
+.section__title--ink { color: var(--cd-grey-dk); }
+
+/* Checklist — eigenständige Bullet-Liste (grünes Quadrat wie Karten) */
+.checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+@media (min-width: 760px) {
+  .checklist--2col { grid-template-columns: 1fr 1fr; column-gap: 2.5rem; }
+}
+.checklist li {
+  position: relative;
+  padding: .8rem 0 .8rem 1.6rem;
+  border-top: 1px dashed var(--cd-grey-line);
+  font-size: 14.5px;
+  color: var(--cd-grey-dk);
+  line-height: 1.45;
+}
+.checklist li::before {
+  content: ""; position: absolute; left: 0; top: 1.15rem;
+  width: 9px; height: 9px; border: 1.5px solid var(--cd-green);
+}
+.checklist--flush li:first-child { border-top: 0; }
+
+/* Prose — Lauftext-Bereiche */
+.prose { max-width: 42rem; }
+.prose h3 { color: var(--cd-grey-dk); font-size: 1.3rem; margin: 1.75rem 0 .6rem; font-weight: 400; }
+.prose h3:first-child { margin-top: 0; }
+.prose p { font-size: 1rem; color: var(--cd-grey); margin: 0 0 1rem; }
+.prose strong { color: var(--cd-grey-dk); font-weight: 600; }
+
+/* Callout — Hinweisboxen (ok/warn) */
+.callout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--cd-grey-line);
+  border-left: 4px solid var(--cd-green);
+  padding: 1.5rem 1.75rem;
+}
+.callout--warn { border-left-color: var(--cd-orange); }
+.callout--solo { grid-template-columns: 1fr; }
+.callout__media { width: 96px; flex-shrink: 0; }
+.callout__media img { width: 100%; height: auto; display: block; }
+.callout__title { font-size: 1.15rem; color: var(--cd-grey-dk); font-weight: 500; margin-bottom: .4rem; }
+.callout__text { margin: 0; font-size: 14px; color: var(--cd-grey); line-height: 1.5; }
+@media (max-width: 640px) {
+  .callout { grid-template-columns: 1fr; gap: 1rem; }
+  .callout__media { width: 72px; }
+}
+
+/* Benefits grid — Vorteils-Kacheln */
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+.benefit {
+  background: #fff;
+  border: 1px solid var(--cd-grey-line);
+  border-top: 3px solid var(--cd-red);
+  padding: 1.5rem;
+}
+.benefit__title { font-size: 1.05rem; color: var(--cd-grey-dk); font-weight: 500; margin-bottom: .5rem; }
+.benefit__text { margin: 0; font-size: 14px; color: var(--cd-grey); line-height: 1.5; }
+
+/* Split — Text + Bild nebeneinander (Smart Climate, X-ONE Austausch) */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+.split__media {
+  background: var(--cd-grey-sect);
+  border: 1px solid var(--cd-grey-line);
+  padding: 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.split__media img { max-height: 360px; width: auto; }
+@media (max-width: 860px) {
+  .split--media-first .split__media { order: -1; }
+  .split__media img { max-height: 260px; }
+}
+
+/* Banner-Bild (X-ONE Panorama o. ä.) */
+.banner img {
+  width: 100%;
+  height: clamp(220px, 36vw, 400px);
+  object-fit: cover;
+  display: block;
+}
+
+/* Modell-Karten (Direktheizung): Reuse .cards/.card, aber 3-spaltig */
+@media (min-width: 760px) {
+  .cards--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1000px) {
+  .cards--3 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* "Section lede" als rechte Spalte neben Section-Head */
+.section__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+@media (max-width: 860px) { .section__intro { grid-template-columns: 1fr; gap: 1.25rem; } }
+.section__intro .section__title { margin-bottom: 0; }
