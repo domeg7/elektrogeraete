@@ -300,6 +300,9 @@ p { margin: 0 0 1em; }
 }
 .nav__list a:hover::after { transform: scaleX(1); }
 
+/* Items, die nur im mobilen Menü erscheinen (aus Topbar + Header-CTA) */
+.nav__mobile-only { display: none; }
+
 .nav__toggle {
   display: none;
   width: 40px; height: 40px;
@@ -777,6 +780,7 @@ p { margin: 0 0 1em; }
   margin-bottom: .35rem;
   font-weight: 300;
   color: var(--cd-grey-dk);
+  text-align: right;
 }
 .step__text {
   margin: 0;
@@ -949,6 +953,7 @@ p { margin: 0 0 1em; }
 .footer__logo-img {
   height: 36px;
   width: auto;
+  align-self: flex-start; /* prevent flex column from stretching the logo wide */
 }
 .footer__tagline {
   color: rgba(255, 255, 255, .7);
@@ -1045,6 +1050,10 @@ p { margin: 0 0 1em; }
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
+  .hero__bg img {
+    /* Motiv auf Mobile ~20% weiter nach rechts schieben */
+    object-position: 55% 45%;
+  }
   .hero__bg::after {
     background:
       linear-gradient(180deg,
@@ -1057,23 +1066,51 @@ p { margin: 0 0 1em; }
 @media (max-width: 768px) {
   body { font-size: 15px; }
 
-  .topbar__inner { font-size: 11px; gap: .6rem; }
-  .topbar__left { gap: .8rem; }
+  /* Topbar-Inhalte wandern ins Menü → Topbar ausblenden */
+  .topbar { display: none; }
 
-  .nav__toggle { display: flex; margin-left: auto; order: 2; }
-  .nav { order: 3; flex-basis: 100%; }
+  /* Burger bleibt im Fluss auf der Logo-Zeile, rechts.
+     Telefon (falls sichtbar) + Burger als Gruppe nach rechts geschoben. */
+  .header__inner { position: relative; flex-wrap: wrap; gap: .5rem 1rem; }
+  .header__cta { order: 1; margin-left: auto; }
+  .nav { order: 2; }
+  .nav__toggle { display: flex; }
+
+  /* Dropdown: dunkler full-width-Panel direkt unter dem Header */
   .nav__list {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem 0 .5rem;
-    border-top: 1px solid var(--cd-grey-line);
-    width: 100%;
+    padding: 1.1rem var(--pad) 1.25rem;
+    background: var(--cd-grey-dk);
+    border-top: 1px solid #2A2A2A;
+    box-shadow: 0 14px 26px rgba(0, 0, 0, .25);
   }
   .nav__list.is-open { display: flex; }
+  .nav__list a { color: #DDD; }
+  .nav__list a:hover { color: #fff; }
 
-  .header__inner { flex-wrap: wrap; gap: .5rem 1rem; }
-  .header__cta .btn { padding: .55em 1em; font-size: 12px; }
+  /* Topbar- + CTA-Einträge im Menü sichtbar machen */
+  .nav__mobile-only { display: block; }
+  .nav__mobile-only--first {
+    margin-top: .5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, .15);
+  }
+  .nav__mobile-cta { margin-top: .35rem; }
+  .nav__mobile-cta .btn {
+    display: inline-block;
+    color: #fff;            /* nicht das helle .nav__list a erben */
+    padding: .65em 1.4em;
+  }
+  .nav__mobile-cta .btn::after { content: none; }  /* kein roter Hover-Strich */
+
+  /* „Beratung anfragen“ steckt jetzt im Menü → Header-Button ausblenden */
+  .header__cta .btn { display: none; }
 
   .hero__meta { grid-template-columns: 1fr; gap: 1rem; }
   .hero__cta .btn { flex: 1; min-width: 160px; }
@@ -1277,6 +1314,22 @@ p { margin: 0 0 1em; }
 @media (max-width: 860px) {
   .split--media-first .split__media { order: -1; }
   .split__media img { max-height: 260px; }
+}
+/* Badge statt Hauptbild: runder Sticker ohne Rahmen */
+.split__media--badge {
+  background: none;
+  border: 0;
+  padding: 0;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.split__media--badge .badge-img {
+  width: clamp(160px, 22vw, 240px);
+  height: auto;
+  max-height: none;
+}
+@media (max-width: 860px) {
+  .split__media--badge .badge-img { width: 180px; }
 }
 
 /* Banner-Bild (X-ONE Panorama o. ä.) */

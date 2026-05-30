@@ -87,6 +87,25 @@
           <li><a href="../#all-inclusive">All-Inclusive</a></li>
           <li><a href="../#service">Service</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
+
+          <!-- Mobile-only: aus Topbar + Header-CTA ins Menü gezogen -->
+          <li class="nav__mobile-only nav__mobile-only--first">
+            <a href="../beratung-vor-ort/" data-not-implemented="Beratung vor Ort">
+              <span class="badge badge--new">Neu</span> Beratung vor Ort
+            </a>
+          </li>
+          <li class="nav__mobile-only">
+            <a href="../positive-messergebnisse/" data-not-implemented="MARU Comfort Messungen">MARU Comfort: Energieverbrauch-Messungen</a>
+          </li>
+          <li class="nav__mobile-only">
+            <a href="../wp-content/uploads/2023/09/PRO-Elektroheizungen.pdf" data-not-implemented="PRO Elektroheizungen (PDF)">PRO Elektroheizungen <span class="topbar__hint">PDF</span></a>
+          </li>
+          <li class="nav__mobile-only">
+            <a href="https://apitec.ch/pour-romandie" rel="noopener"><span class="topbar__flag" aria-hidden="true">FR</span> pour la Romandie</a>
+          </li>
+          <li class="nav__mobile-only nav__mobile-cta">
+            <a href="#kontakt" class="btn">Beratung anfragen</a>
+          </li>
         </ul>
       </nav>
 
@@ -147,10 +166,7 @@
 
     <!-- Kurz erklärt -->
     <section class="section">
-      <div class="container split split--media-first">
-        <div class="split__media">
-          <img src="../assets/images/Icon-Teilspeicherheizung.png" alt="Schema einer Teilspeicherheizung mit Speicherkern." width="320" height="320" loading="lazy" />
-        </div>
+      <div class="container split">
         <div class="prose">
           <span class="kicker">Energiewende, mitgedacht</span>
           <h3>Es muss nicht immer die Wärmepumpe sein</h3>
@@ -165,6 +181,9 @@
             <li>Integrierbar in bestehende PV-Anlagen</li>
             <li>Bis zu 50-mal weniger Standby-Strom</li>
           </ul>
+        </div>
+        <div class="split__media split__media--badge">
+          <img src="../assets/images/Icon-Teilspeicherheizung.png" alt="Die Teilspeicherheizung hat viele Einsatzmöglichkeiten." width="240" height="240" class="badge-img" loading="lazy" />
         </div>
       </div>
     </section>
@@ -335,7 +354,7 @@
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
-        <img src="../assets/images/apitec-logo-light.svg" alt="Apitec AG" class="footer__logo-img" width="260" height="64" />
+        <img src="../assets/images/Logo-Apitec-AG-weiss.png" alt="Apitec AG" class="footer__logo-img" width="200" height="54" />
         <p class="footer__tagline">Ihr Partner in Sachen Heizung und Klimageräte.</p>
       </div>
 
