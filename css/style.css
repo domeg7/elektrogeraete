@@ -1291,20 +1291,20 @@ p { margin: 0 0 1em; }
 }
 /* Seat the red seal in a tinted halo so it reads as intentional, not floating */
 .callout--ok .callout__media {
-  width: 128px;
-  height: 128px;
+  width: 184px;
+  height: 184px;
   border-radius: 50%;
   background: radial-gradient(circle at center, rgba(80, 192, 92, .14), rgba(80, 192, 92, 0) 68%);
 }
-.callout--ok .callout__media img { width: 92px; }
+.callout--ok .callout__media img { width: 148px; }
 .callout__media img { width: 100%; height: auto; display: block; }
 .callout__title { font-size: 1.25rem; color: var(--cd-grey-dk); font-weight: 500; margin-bottom: .5rem; line-height: 1.3; }
 .callout__text { margin: 0; font-size: 15px; color: var(--cd-grey); line-height: 1.6; }
 @media (max-width: 640px) {
   .callout { grid-template-columns: 1fr; gap: 1rem; padding: 1.5rem 1.5rem; }
   .callout__media { width: 72px; }
-  .callout--ok .callout__media { width: 96px; height: 96px; }
-  .callout--ok .callout__media img { width: 68px; }
+  .callout--ok .callout__media { width: 132px; height: 132px; }
+  .callout--ok .callout__media img { width: 104px; }
 }
 
 /* Benefits grid — Vorteils-Kacheln */
