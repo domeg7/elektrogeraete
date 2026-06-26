@@ -551,7 +551,7 @@ p { margin: 0 0 1em; }
   gap: 1.5rem;
 }
 @media (min-width: 900px) {
-  .cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 .card {
@@ -770,12 +770,14 @@ p { margin: 0 0 1em; }
 .step:first-child { border-top: 1px solid var(--cd-grey-dk); }
 .step:last-child { border-bottom: 1px solid var(--cd-grey-dk); }
 .step__num {
+  grid-column: 1;
   font-size: 12px;
   color: var(--cd-red);
   font-weight: 600;
   letter-spacing: 1.5px;
 }
 .step__title {
+  grid-column: 2;
   font-size: 1.4rem;
   margin-bottom: .35rem;
   font-weight: 300;
@@ -783,6 +785,7 @@ p { margin: 0 0 1em; }
   text-align: right;
 }
 .step__text {
+  grid-column: 1 / -1;
   margin: 0;
   font-size: 14px;
   color: var(--cd-grey);
@@ -1347,6 +1350,10 @@ p { margin: 0 0 1em; }
 @media (min-width: 1000px) {
   .cards--3 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+/* Zwei-Karten-Variante (z. B. "Weitere Heizsysteme" ohne X-ONE) */
+@media (min-width: 640px) {
+  .cards--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 
 /* "Section lede" als rechte Spalte neben Section-Head */
 .section__intro {
@@ -1358,3 +1365,118 @@ p { margin: 0 0 1em; }
 }
 @media (max-width: 860px) { .section__intro { grid-template-columns: 1fr; gap: 1.25rem; } }
 .section__intro .section__title { margin-bottom: 0; }
+
+/* ==========================
+   Forms (Phase 2) — Kontakt/Offerte
+   ========================== */
+.section--form { background: var(--cd-grey-sect); }
+.form__wrap { max-width: 760px; margin-inline: auto; }
+.form__head { margin-bottom: clamp(1.5rem, 4vw, 2.25rem); }
+.form__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.06;
+  font-weight: 300;
+  color: var(--cd-red);
+  margin: .25rem 0 .15rem;
+}
+.form__product {
+  font-size: 1.15rem;
+  color: var(--cd-grey-dk);
+  margin: 0 0 .9rem;
+}
+.form__lead { color: var(--cd-grey); max-width: 46rem; margin: 0; }
+
+.form { display: grid; gap: 1.15rem; }
+.form__row { display: grid; gap: 1.15rem; }
+@media (min-width: 560px) { .form__row { grid-template-columns: 1fr 1fr; } }
+
+.form__group { display: grid; gap: .4rem; }
+.form__group > label,
+.form__legend {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cd-grey);
+  letter-spacing: .2px;
+}
+.form .req { color: var(--cd-red); }
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="tel"],
+.form input[type="number"],
+.form textarea {
+  width: 100%;
+  padding: .72rem .85rem;
+  font: inherit;
+  font-size: 15px;
+  color: var(--cd-grey-dk);
+  background: #fff;
+  border: 1px solid var(--cd-grey-line);
+  border-radius: 3px;
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.form input:focus-visible,
+.form textarea:focus-visible {
+  outline: none;
+  border-color: var(--cd-red);
+  box-shadow: 0 0 0 3px rgba(235, 30, 37, .15);
+}
+
+.form__fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: .55rem; }
+.form__choices { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; }
+.choice {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  font-size: 15px;
+  color: var(--cd-grey-dk);
+  cursor: pointer;
+}
+.choice input[type="checkbox"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: var(--cd-red);
+  flex: 0 0 auto;
+}
+.choice--consent {
+  align-items: flex-start;
+  gap: .65rem;
+  font-size: 14px;
+  color: var(--cd-grey);
+  line-height: 1.5;
+  margin-top: .25rem;
+}
+.choice--consent input { margin-top: .15rem; }
+.choice--consent a { color: var(--cd-red); }
+
+.form__submit { width: 100%; margin-top: .35rem; }
+.form__submit:disabled { opacity: .6; cursor: progress; }
+.form__submit::after { content: none; }
+
+.form__status { margin: 0; font-size: 15px; }
+.form__status--ok { color: #2E7D32; font-weight: 500; }
+.form__status--err { color: var(--cd-red); font-weight: 500; }
+.form__note { font-size: 14px; color: var(--cd-grey-md); margin: 0; }
+.form__note a { color: var(--cd-red); }
+
+/* visuell verstecktes Honeypot-Feld */
+.hidden { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+
+/* ==========================
+   Rechtliche Seiten (Impressum / Datenschutz)
+   ========================== */
+.legal { max-width: 46rem; margin-inline: auto; }
+.legal .form__title,
+.legal .section__title { margin-bottom: 1.25rem; }
+.legal .prose { max-width: none; }
+.prose h2 {
+  color: var(--cd-grey-dk);
+  font-size: 1.25rem;
+  margin: 1.9rem 0 .5rem;
+  font-weight: 500;
+}
+.prose h2:first-child { margin-top: 0; }
+.prose ul { margin: 0 0 1rem; padding-left: 1.25rem; color: var(--cd-grey); }
+.prose li { margin: .25rem 0; }
+.prose a { color: var(--cd-red); }
+.legal__updated { font-size: .9rem; color: var(--cd-grey-md); margin-top: 2rem; }
