@@ -11,16 +11,6 @@
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="icon" type="image/png" href="../assets/images/Apitec-Favicon.png" />
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://die-elektroheizungen.ch/" },
-      { "@type": "ListItem", "position": 2, "name": "Offerte anfordern", "item": "https://die-elektroheizungen.ch/kontakt/" }
-    ]
-  }
-  </script>
 </head>
 <body>
 
@@ -31,7 +21,7 @@
     <div class="topbar__inner container">
       <div class="topbar__left">
         <a href="../teilspeichergerate/" class="topbar__link">MARU Comfort Teilspeicher</a>
-        <a href="../wp-content/uploads/2023/09/PRO-Elektroheizungen.pdf" data-not-implemented="PRO Elektroheizungen (PDF)" class="topbar__link">PRO Elektroheizungen <span class="topbar__hint">PDF</span></a>
+        <a href="../assets/PRO-Elektroheizungen.pdf" class="topbar__link" target="_blank" rel="noopener">PRO Elektroheizungen <span class="topbar__hint">PDF</span></a>
       </div>
     </div>
   </div>
@@ -59,7 +49,7 @@
             <a href="../teilspeichergerate/">MARU Comfort Teilspeicher</a>
           </li>
           <li class="nav__mobile-only">
-            <a href="../wp-content/uploads/2023/09/PRO-Elektroheizungen.pdf" data-not-implemented="PRO Elektroheizungen (PDF)">PRO Elektroheizungen <span class="topbar__hint">PDF</span></a>
+            <a href="../assets/PRO-Elektroheizungen.pdf" target="_blank" rel="noopener">PRO Elektroheizungen <span class="topbar__hint">PDF</span></a>
           </li>
           <li class="nav__mobile-only nav__mobile-cta">
             <a href="#offerte" class="btn">Offerte anfordern</a>
@@ -81,14 +71,6 @@
 
     <section class="section section--form" id="offerte">
       <div class="container form__wrap">
-        <nav class="breadcrumb" aria-label="Brotkrumen">
-          <ol>
-            <li><a href="../">Start</a></li>
-            <li class="breadcrumb__sep" aria-hidden="true">/</li>
-            <li aria-current="page">Offerte anfordern</li>
-          </ol>
-        </nav>
-
         <header class="form__head">
           <span class="kicker">Offerte anfordern · Unverbindlich</span>
           <h1 class="form__title">Kontaktformular Offerte</h1>
@@ -97,6 +79,11 @@
             Tragen Sie Ihre Angaben in das Formular ein — wir kontaktieren Sie
             anschliessend umgehend. Unverbindlich und kostenfrei.
           </p>
+          <ul class="form__trust">
+            <li>Unverbindlich &amp; kostenfrei</li>
+            <li>Wir melden uns umgehend</li>
+            <li>Persönliche Beratung</li>
+          </ul>
         </header>
 
         <form class="form" action="https://api.web3forms.com/submit" method="POST" data-web3form>
@@ -222,7 +209,6 @@
         <ul class="footer__list">
           <li><a href="../impressum/">Impressum</a></li>
           <li><a href="../datenschutz/">Datenschutz</a></li>
-          <li><a href="#" data-not-implemented="AGB">AGB</a></li>
         </ul>
       </div>
     </div>
