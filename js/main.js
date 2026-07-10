@@ -116,7 +116,7 @@
         if (res.ok && data.success) {
           form.reset();
           setStatus(
-            "Vielen Dank! Ihre Anfrage ist bei uns eingegangen — wir melden uns umgehend.",
+            "Vielen Dank! Ihre Anfrage ist bei uns eingegangen — wir melden uns baldmöglichst.",
             "ok"
           );
         } else {
