@@ -23,7 +23,7 @@
 - [x] Pro Seite: eigener Title/Description/Canonical/OG + JSON-LD Product + BreadcrumbList
 
 ## Phase 2 — noch offen (nach Rücksprache)
-- [ ] `/beratung-vor-ort/` — Vor-Ort-Service-Seite
+- [x] `/beratung-vor-ort/` — Vor-Ort-Service-Seite (Text Juli 2026: Beratung durch Partnerfirma, deutsche Schweiz auf Anfrage)
 - [ ] `/positive-messergebnisse/` — MARU-Comfort-Messdaten
 - [ ] `/kontakt-direktheizung/` — Kontaktformular Direktheizung
 - [ ] `/kontakt-speicherheizgeraet/` — Kontaktformular Speicher
