@@ -53,9 +53,34 @@
   });
 
   // ---- Web3Forms submit (progressive enhancement) ----
+  // Google reCAPTCHA v3 (Spamschutz für Web3Forms):
+  // 1. v3-Schlüsselpaar erstellen: https://www.google.com/recaptcha/admin
+  // 2. Site-Key hier eintragen, Secret-Key im Web3Forms-Dashboard hinterlegen.
+  // Solange der Site-Key leer ist, wird ohne Captcha-Token gesendet.
+  const RECAPTCHA_SITE_KEY = "6LejVEwtAAAAAF61THNasG_0wNNQcQ3S05elj0dq";
+
+  let recaptchaLoader = null;
+  function loadRecaptcha() {
+    if (!RECAPTCHA_SITE_KEY) return Promise.resolve(null);
+    if (!recaptchaLoader) {
+      recaptchaLoader = new Promise((resolve, reject) => {
+        const s = document.createElement("script");
+        s.src = "https://www.google.com/recaptcha/api.js?render=" + RECAPTCHA_SITE_KEY;
+        s.async = true;
+        s.onload = () => window.grecaptcha.ready(() => resolve(window.grecaptcha));
+        s.onerror = () => reject(new Error("reCAPTCHA konnte nicht geladen werden"));
+        document.head.appendChild(s);
+      });
+    }
+    return recaptchaLoader;
+  }
+
   document.querySelectorAll("form[data-web3form]").forEach((form) => {
     const status = form.querySelector(".form__status");
     const submit = form.querySelector('[type="submit"]');
+
+    // reCAPTCHA früh laden, damit v3 das Nutzerverhalten bewerten kann
+    loadRecaptcha().catch(() => {});
 
     function setStatus(text, kind) {
       if (!status) return;
@@ -75,6 +100,13 @@
       }
 
       try {
+        if (RECAPTCHA_SITE_KEY) {
+          const grecaptcha = await loadRecaptcha();
+          const token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: "submit" });
+          const tokenField = form.querySelector('input[name="recaptcha_response"]');
+          if (tokenField) tokenField.value = token;
+        }
+
         const res = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: { Accept: "application/json" },

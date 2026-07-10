@@ -30,4 +30,14 @@
 - [ ] Vollständiges Kontaktformular mit Validierung + Datenschutz-Hinweis
 - [ ] Datenschutz / Impressum (rechtlich)
 - [ ] „Technische Daten" je Modell (Datenblätter/PDF) — aktuell Toast
-- [ ] PRO-Elektroheizungen-PDF hinterlegen unter `/wp-content/uploads/2023/09/`
+- [ ] PRO-Elektroheizungen-PDF hinterlegen unter `/wp-content/uploads/2023/09/` — gelöst per 301 auf `/assets/PRO-Elektroheizungen.pdf` (siehe `.htaccess`)
+
+## Go-Live SEO (Audit Juli 2026)
+- [x] Redirect-Map für entfernte Live-URLs (`.htaccess` + `redirects-nginx.conf`): monoblock-warmepumpe-x-one, kontakt-direktheizung, kontakt-speicherheizgeraet, kontakt-x-one, welcome, altes PDF, alte Yoast-Sitemaps
+- [x] `robots.txt` + statische `sitemap.xml` (9 Seiten)
+- [x] `noindex` auf `/kontakt/` entfernt (Live-URL ist indexiert)
+- [x] BreadcrumbList-JSON-LD auf allen 5 Unterseiten
+- [x] Keyword „Nachtspeicherofen ersetzen" in Homepage-Produktsektion
+- [ ] Beim Hoster: www→non-www- und HTTP→HTTPS-Redirect (301) beibehalten
+- [ ] Nach Go-Live: neue `sitemap.xml` in der Search Console einreichen, alte `sitemap_index.xml` entfernen
+- [ ] Eigene 404-Seite einrichten

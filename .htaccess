@@ -1,0 +1,23 @@
+# die-elektroheizungen.ch — Go-Live-Redirects (Apache)
+# Kanonische Domain: https://die-elektroheizungen.ch (non-www, wie bisher)
+
+RewriteEngine On
+
+# HTTP -> HTTPS und www -> non-www (wie auf der alten Site)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.die-elektroheizungen\.ch$ [NC]
+RewriteRule ^(.*)$ https://die-elektroheizungen.ch/$1 [R=301,L]
+
+# Entfernte bzw. konsolidierte Seiten der alten WordPress-Site
+Redirect 301 /monoblock-warmepumpe-x-one/ https://die-elektroheizungen.ch/
+Redirect 301 /kontakt-direktheizung/ https://die-elektroheizungen.ch/kontakt/
+Redirect 301 /kontakt-speicherheizgeraet/ https://die-elektroheizungen.ch/kontakt/
+Redirect 301 /kontakt-x-one/ https://die-elektroheizungen.ch/kontakt/
+Redirect 301 /welcome/ https://die-elektroheizungen.ch/
+
+# PDF ist umgezogen (alter WordPress-Upload-Pfad)
+Redirect 301 /wp-content/uploads/2023/09/PRO-Elektroheizungen.pdf https://die-elektroheizungen.ch/assets/PRO-Elektroheizungen.pdf
+
+# Alte Yoast-Sitemap auf die neue statische Sitemap
+Redirect 301 /sitemap_index.xml https://die-elektroheizungen.ch/sitemap.xml
+Redirect 301 /page-sitemap.xml https://die-elektroheizungen.ch/sitemap.xml
